@@ -187,7 +187,7 @@ function settings_screen() {
  *     @type string $value   Optional. Value in question.
  * }
  *
- * @return void       
+ * @return void
  */
 function display_formatted_error( $error ) {
 	$messages = get_error_messages();
@@ -230,3 +230,11 @@ function get_error_messages() {
 
 	return $messages;
 }
+
+add_action( 'after_plugin_row_ads-txt/ads-txt.php', 'AdsTxt\ads_txt_warning', 10, 3);
+
+function ads_txt_warning( $plugin_file, $plugin_data, $status ) {
+  echo '<div class="notice notice-error"><p>
+				The ads-txt plugin requires rewrites to be enabled.
+        </p></div>';
+};
